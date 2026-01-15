@@ -132,11 +132,11 @@ Model comparison is used to select the best-performing approach.
 ```
 MindScope-2025/
 │
-├── data/
-│   └── mental_health_dataset_2025.csv
+├── Data/
+│   └── Global_Mental_Health_Dataset_2025.csv
 │
-├── notebooks/
-│   ├── 01_data_cleaning.ipynb
+├── Notebooks/
+│   ├── 01_Data_cleaning.ipynb
 │   ├── 02_eda_visualization.ipynb
 │   └── 03_model_training.ipynb
 │
@@ -144,4 +144,5 @@ MindScope-2025/
 │   └── project_report.pdf
 │
 ├── requirements.txt
+├── LICENSE.md
 └── README.md
