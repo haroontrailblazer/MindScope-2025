@@ -1,4 +1,5 @@
-## MindScope-2025 — Mental Health Status Analysis using AI
+## MindScope-2025 
+Mental Health Status Analysis using AI
 
 > AI-driven mental health analytics project using PHQ-9, GAD-7, and stress indicators to identify risk patterns through data science and machine learning.
 
@@ -27,22 +28,31 @@ The project applies statistical analysis, visualization, and ML models to unders
 
 ---
 
-## Dataset Features
+## Dataset Description
 
-| Feature | Description |
-|--------|------------|
-| Age | Patient age |
-| Gender | Male / Female |
-| Country | Patient location |
-| Depression_Score | PHQ-9 score (0–27) |
-| Anxiety_Score | GAD-7 score (0–21) |
-| Stress_Level | Low / Moderate / High |
-| Sleep_Hours | Average sleep duration |
-| Physical_Activity | Activity level |
-| Chronic_Illness | Yes / No |
-| Treatment | Therapy / Medication / Both / None |
-| Outcome | Treatment outcome |
-| Work_Status | Employment status |
+The dataset contains synthetic patient-level mental health records collected using standardized psychological screening tools and lifestyle indicators.
+
+### Features Included
+
+- Age  
+- Gender  
+- Country  
+- Depression_Score (PHQ-9)  
+- Anxiety_Score (GAD-7)  
+- Stress_Level  
+- Sleep_Hours  
+- Physical_Activity  
+- Chronic_Illness  
+- Mental_Health_History  
+- Treatment  
+- Days_of_Treatment  
+- Outcome  
+- Work_Status  
+
+### Target Variables
+
+- Depression_Level (Derived from PHQ-9 thresholds)  
+- Anxiety_Level (Derived from GAD-7 thresholds)
 
 ---
 
@@ -119,4 +129,19 @@ Model comparison is used to select the best-performing approach.
 ---
 
 ## Project Structure
-
+```
+MindScope-2025/
+│
+├── data/
+│   └── mental_health_dataset_2025.csv
+│
+├── notebooks/
+│   ├── 01_data_cleaning.ipynb
+│   ├── 02_eda_visualization.ipynb
+│   └── 03_model_training.ipynb
+│
+├── reports/
+│   └── project_report.pdf
+│
+├── requirements.txt
+└── README.md
