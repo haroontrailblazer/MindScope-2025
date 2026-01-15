@@ -1,4 +1,6 @@
 ## MindScope-2025 
+![1000166454](https://github.com/user-attachments/assets/93d0677b-9de0-4260-b141-fd0994a110fd)
+
 Mental Health Status Analysis using AI
 
 > AI-driven mental health analytics project using PHQ-9, GAD-7, and stress indicators to identify risk patterns through data science and machine learning.
