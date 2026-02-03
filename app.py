@@ -17,7 +17,7 @@ import streamlit.components.v1 as components
 # --- Page Configuration ---
 st.set_page_config(
     page_title="MindScope-2025 - Mental Health Assessment",
-    page_icon="https://github.com/haroontrailblazer/MomentoMonto/blob/main/MomentoMonto-icon.png?raw=true",
+    page_icon="https://github.com/haroontrailblazer/haroontrailblazer/blob/main/Project%20Pngs/ico.png?raw=true",
     layout="centered",
     menu_items={
         'About':"""
