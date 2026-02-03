@@ -3,6 +3,7 @@ numpy
 matplotlib
 seaborn
 scikit-learn
+streamlit
 jupyter
 notebook==7.0.6
 plotly
