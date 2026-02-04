@@ -129,22 +129,44 @@ Model comparison is used to select the best-performing approach.
 - Jupyter Notebook  
 
 ---
+## Application Architecture
+```
+Data Layer
+│
+├─ CSV Dataset (2,500+ records)
+│  └─ 16 features + targets
+│
+Model Layer
+│
+├─ 02_model_training.py
+│  ├─ Load & Clean Data
+│  ├─ Feature Engineering
+│  ├─ Train 3 Models
+│  └─ Export Best Model (85% accuracy)
+│
+Application Layer
+│
+└─ app.py (Streamlit)
+   ├─ Page 1: Home (Overview)
+   ├─ Page 2: Test (16 Questions)
+   ├─ Page 3: Results (Dashboards + Solutions)
+   └─ Page 4: About (Resources)
+```
 
 ## Project Structure
 ```
 MindScope-2025/
+├─ Data/
+├── 01_Data_Cleaning.ipynb (original)
+├── Global_Mental_Health_Dataset_2025.csv (original)
 │
-├── Data/
-│   └── Global_Mental_Health_Dataset_2025.csv
-│
-├── Notebooks/
-│   ├── 01_Data_cleaning.ipynb
-│   ├── 02_eda_visualization.ipynb
-│   └── 03_model_training.ipynb
-│
-├── reports/
-│   └── project_report.pdf
-│
+├── 02_model_training.py
+├── app.py
 ├── requirements.txt
-├── LICENSE.md
-└── README.md
+├── README.md
+│
+└── models/ (auto-created after training)
+    ├── best_risk_model.pkl
+    ├── encoders.pkl
+    └── feature_cols.pkl
+```
