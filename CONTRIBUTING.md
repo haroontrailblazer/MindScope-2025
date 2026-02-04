@@ -55,6 +55,19 @@ This project demonstrates:
 ---
 <br>
 
+## Contributing
+
+Contributions welcome! Areas for enhancement:
+- [ ] Additional assessment scales (DASS-21, BDI-II)
+- [ ] Multi-language support
+- [ ] Mobile app development
+- [ ] Healthcare provider integration
+- [ ] Real clinical validation
+
+
+---
+<br>
+
 **Together, let's improve mental health awareness and accessibility! 🧠**
 
 ## Change Log
