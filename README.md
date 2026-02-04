@@ -1,6 +1,6 @@
   <div align=center>
    
-  ## MindScope-2025: AI-Powered Mental Health Assessment App
+  # MindScope-2025: AI-Powered Mental Health Assessment App
    
   ![Mental Health Assessment](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
   ![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red?logo=streamlit)
@@ -9,9 +9,13 @@
   
   ![1000166454](https://github.com/user-attachments/assets/93d0677b-9de0-4260-b141-fd0994a110fd)
   </div>
+  
   Mental Health Status Analysis using AI
   
   > AI-driven mental health analytics project using PHQ-9, GAD-7, and stress indicators to identify risk patterns through data science and machine learning.
+
+---
+<br>
 
 ## Overview
 
@@ -24,6 +28,7 @@
 The project applies statistical analysis, visualization, and ML models to understand relationships between mental health factors and predict risk categories, demonstrating real-world healthcare analytics using AI.
 
 ---
+<br>
 
 ## Objectives
 
@@ -35,13 +40,13 @@ The project applies statistical analysis, visualization, and ML models to unders
 - Visualize trends and insights for interpretation  
 
 ---
+<br>
 
 ## Dataset Description
 
 The dataset contains synthetic patient-level mental health records collected using standardized psychological screening tools and lifestyle indicators.
 
 ### Features Included
-
 - Age  
 - Gender  
 - Country  
@@ -63,6 +68,7 @@ The dataset contains synthetic patient-level mental health records collected usi
 - Anxiety_Level (Derived from GAD-7 thresholds)
 
 ---
+<br>
 
 ## Psychological Scales Used
 
@@ -86,11 +92,11 @@ The dataset contains synthetic patient-level mental health records collected usi
 | 15–21 | Severe |
 
 ---
+<br>
 
 ## Exploratory Data Analysis (EDA)
 
 Key analyses performed:
-
 - Distribution of depression and anxiety severity  
 - Stress level vs sleep and activity patterns  
 - Gender-wise and age-wise mental health trends  
@@ -105,6 +111,7 @@ Visualizations include:
 - Correlation heatmaps  
 
 ---
+<br>
 
 ## Machine Learning
 
@@ -136,16 +143,22 @@ F1-Score:        0.84
 Model comparison is used to select the best-performing approach.
 
 ---
+<br>
 
-## Tools & Technologies
+## Technology Stack
 
-- Python  
-- Pandas, NumPy  
-- Matplotlib, Seaborn  
-- Scikit-learn  
-- Jupyter Notebook  
+| Layer | Technology | Version |
+|-------|-----------|---------|
+| **Frontend** | Streamlit | 1.31.0 |
+| **Backend** | Python | 3.8+ |
+| **ML Framework** | Scikit-learn | 1.3.2 |
+| **Data Processing** | Pandas, NumPy | 2.1.4, 1.26.2 |
+| **Visualization** | Plotly | 5.18.0 |
+| **Serialization** | Joblib | 1.3.2 |
 
 ---
+<br>
+
 ## Application Architecture
 ```
 Data Layer
@@ -169,6 +182,7 @@ Application Layer
    ├─ Page 3: Results (Dashboards + Solutions)
    └─ Page 4: About (Resources)
 ```
+<br>
 
 ## Project Structure
 ```
@@ -188,21 +202,9 @@ MindScope-2025/
     └── feature_cols.pkl
 ```
 ---
+<br>
 
-## 🛠️ Technology Stack
-
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| **Frontend** | Streamlit | 1.31.0 |
-| **Backend** | Python | 3.8+ |
-| **ML Framework** | Scikit-learn | 1.3.2 |
-| **Data Processing** | Pandas, NumPy | 2.1.4, 1.26.2 |
-| **Visualization** | Plotly | 5.18.0 |
-| **Serialization** | Joblib | 1.3.2 |
-
----
-
-## 📱 Supported Features
+## Supported Features
 
 ### Completed
 - [x] PHQ-9 screening questionnaire
@@ -230,6 +232,7 @@ MindScope-2025/
 - [ ] Wearable device sync (Apple Health, Fitbit)
 
 ---
+<br>
 
 ## Personalized Solutions by Risk Level
 
@@ -257,6 +260,7 @@ MindScope-2025/
 - Self-Care: Safety planning, journaling, emergency contacts
 
 ---
+<br>
 
 ## Testing Guide
 
@@ -282,6 +286,7 @@ Expected: High Risk → Professional help recommendation
 ```
 
 ---
+<br>
 
 ## Important Disclaimers
 
@@ -299,6 +304,7 @@ Expected: High Risk → Professional help recommendation
 - AAMI (India): **9152987821**
 
 ---
+<br>
 
 ## Data Privacy & Security
 
@@ -310,6 +316,7 @@ Expected: High Risk → Professional help recommendation
 - Assessments are **completely anonymous**
 
 ---
+<br>
 
 ## Dataset Information
 
@@ -320,6 +327,7 @@ Expected: High Risk → Professional help recommendation
 - **Use**: Educational and research purposes only
 
 ---
+<br>
 
 ## Learning Resources
 
@@ -338,6 +346,7 @@ Expected: High Risk → Professional help recommendation
 - [Python ML Handbook](https://scikit-learn.org/stable/index.html)
 
 ---
+<br>
 
 ## Contributing
 
@@ -354,75 +363,6 @@ Contributions welcome! Areas for enhancement:
 
 This project is open-source. See `LICENSE.md` for details.
 
----
-
-## Author
-
-**MindScope Development Team**
-- Computer Science Student
-- Focus: Mental Health Technology
-- Location: Chennai, India
-
----
-
-## Acknowledgments
-
-- **Dataset**: Global Mental Health Dataset 2025 (Kaggle)
-- **Assessment Tools**: PHQ-9 and GAD-7 (Evidence-based clinical instruments)
-- **Framework**: Streamlit (Amazing web app framework)
-- **ML Library**: Scikit-learn (Excellent machine learning tools)
-
----
-
-## Support
-
-- **Documentation**: See SETUP_GUIDE.md for detailed instructions
-- **Quick Start**: See QUICK_REFERENCE.md for development tips
-- **Issues**: Report bugs or suggest features
-- **Discussion**: Open for collaboration and feedback
-
----
-
-## Educational Value
-
-This project demonstrates:
-1. **Full ML Pipeline**: Data → Features → Training → Deployment
-2. **Clinical Knowledge**: Evidence-based assessment tools
-3. **Full-Stack**: Backend ML + Frontend UI
-4. **Best Practices**: Clean code, documentation, testing
-5. **Real-World Impact**: Technology for mental health awareness
-
-**Perfect portfolio project for:** Data Science, Machine Learning, Healthcare Tech, Full-Stack Development roles.
-
----
-
-## What Makes This Special
-
-- **Purpose-Driven**: Addresses real mental health need
-- **Evidence-Based**: Uses clinically validated scales
-- **AI-Powered**: Machine learning for risk prediction
-- **User-Friendly**: Intuitive interface for non-technical users
-- **Privacy-First**: Local processing, no data transmission
-- **Comprehensive**: 96+ personalized recommendations
-- **Production-Ready**: Ready to deploy and share
-
----
-
-**Together, let's improve mental health awareness and accessibility! 🧠**
-
----
-
-## Change Log
-
-### v1.0.0 (Current Release)
-- Complete ML model training pipeline
-- Interactive Streamlit web app
-- PHQ-9 & GAD-7 assessment tools
-- 96+ personalized solutions
-- Production-ready deployment
-- Comprehensive documentation
-
----
 
 **Last Updated**: February 3, 2026
 **Version**: 1.0.0 Production Ready
