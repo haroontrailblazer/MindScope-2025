@@ -544,7 +544,7 @@ def main():
     if page == "🏠 Home":
         
         with st.sidebar: 
-            st.markdown("<h4 style='color:#fffdd0;'>Know more about MindScope</h4>",unsafe_allow_html=True) 
+            st.markdown("<h4 style='color:#7A6AF8;'>Know more about MindScope</h4>",unsafe_allow_html=True) 
             page = st.button("About", key="about_button",use_container_width=True)
             if page:
                 st.session_state.page = "About"
