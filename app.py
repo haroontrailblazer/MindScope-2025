@@ -543,9 +543,10 @@ def main():
         
         with st.sidebar: 
             st.markdown("<h4 style='color:#fffdd0;'>Know more about MindScope</h4>",unsafe_allow_html=True) 
-            page = st.button("About", key="about_button")
+            page = st.button("About", key="about_button",use_container_width=True)
             if page:
                 st.session_state.page = "About"
+                st.rerun()
         
         st.markdown("""
         <h1 style='text-align:left; color:#8b5cf6;'>MindScope</h1>
