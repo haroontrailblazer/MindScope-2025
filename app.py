@@ -551,7 +551,7 @@ def main():
                 st.rerun()
         
         st.markdown("""
-        <h1 style='text-align:left; background: linear-gradient(90deg, #8B7BFF, #B6A9FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>MindScope</h1>
+        <h1 style='text-align:left; color: #7A6AF8;'>MindScope</h1>
         <p style='text-align:left; color:grey; font-size:14px; margin-top:-10px;'>AI-powered mental health assessment tool, Evidence-based depression and anxiety screening with personalized recommendations.</p>""", unsafe_allow_html=True)
         
         if st.button("Start My Screening Test", icon="📋"):
