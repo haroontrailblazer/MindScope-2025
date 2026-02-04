@@ -1,118 +1,113 @@
-<div align=center>
-
-## MindScope-2025: AI-Powered Mental Health Assessment App
+# 🧠 MindScope-2025: AI-Powered Mental Health Assessment App
 
 ![Mental Health Assessment](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
 ![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red?logo=streamlit)
 ![Machine Learning](https://img.shields.io/badge/ML-Scikit--learn-orange?logo=scikit-learn)
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-green)
 
-![1000166454](https://github.com/user-attachments/assets/93d0677b-9de0-4260-b141-fd0994a110fd)
+---
 
-Mental Health Status Analysis using AI
+## 🎯 Overview
 
-> AI-driven mental health analytics project using PHQ-9, GAD-7, and stress indicators to identify risk patterns through data science and machine learning.
-<div>
+**MindScope-2025** is a comprehensive, real-time mental health assessment application that combines:
+- **Validated Clinical Tools**: PHQ-9 (depression) and GAD-7 (anxiety) questionnaires
+- **Machine Learning**: Random Forest classifier for risk prediction
+- **Interactive UI**: Streamlit web application with 4-page interface
+- **Personalized Solutions**: 96+ tailored recommendations across 15 categories
+- **Data Privacy**: 100% local processing, no external data transmission
 
-## Overview
-
-**MindScope-2025** is an end-to-end data science and machine learning project focused on analyzing mental health trends using standardized psychological screening tools:
-
-- **PHQ-9** — Depression Severity  
-- **GAD-7** — Anxiety Severity  
-- **Stress Indicators (PSS-style features)**  
-
-The project applies statistical analysis, visualization, and ML models to understand relationships between mental health factors and predict risk categories, demonstrating real-world healthcare analytics using AI.
+**Perfect for:** Students, individuals, community health workers, and wellness programs.
 
 ---
 
-## Objectives
+## ✨ Key Features
 
-- Clean and preprocess mental health survey data  
-- Categorize depression and anxiety using clinical thresholds  
-- Perform Exploratory Data Analysis (EDA)  
-- Analyze correlation between mental health variables  
-- Build ML models for risk prediction  
-- Visualize trends and insights for interpretation  
+### 🏠 Home Page
+- Project overview and introduction
+- Feature highlights
+- Quick navigation to assessment
 
----
+### 📋 Screening Test
+- **16 Interactive Questions**:
+  - 9 PHQ-9 questions (depression screening)
+  - 7 GAD-7 questions (anxiety screening)
+- **Lifestyle Assessment**:
+  - Sleep hours, physical activity
+  - Stress level, medical history
+  - Treatment status
+- **Real-time Scoring**: Instant feedback on depression/anxiety levels
 
-## Dataset Description
+### 📈 Results & Solutions
+- **Visual Dashboards**:
+  - Depression and anxiety gauge charts
+  - Risk level classification
+  - Confidence metrics
+- **Personalized Recommendations**:
+  - Risk-stratified solutions (Low/Moderate/High)
+  - 15+ categories of recommendations
+  - Emergency resources for high-risk users
 
-The dataset contains synthetic patient-level mental health records collected using standardized psychological screening tools and lifestyle indicators.
-
-### Features Included
-
-- Age  
-- Gender  
-- Country  
-- Depression_Score (PHQ-9)  
-- Anxiety_Score (GAD-7)  
-- Stress_Level  
-- Sleep_Hours  
-- Physical_Activity  
-- Chronic_Illness  
-- Mental_Health_History  
-- Treatment  
-- Days_of_Treatment  
-- Outcome  
-- Work_Status  
-
-### Target Variables
-
-- Depression_Level (Derived from PHQ-9 thresholds)  
-- Anxiety_Level (Derived from GAD-7 thresholds)
+### ℹ️ About Page
+- Clinical scale information
+- Technology stack details
+- Data privacy and disclaimer
+- Crisis hotlines and resources
 
 ---
 
-## Psychological Scales Used
+## 🚀 Quick Start
 
-### 🔹 PHQ-9 (Depression Levels)
+### Installation (5 minutes)
 
+```bash
+# 1. Setup virtual environment
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# 2. Install dependencies
+pip install -r requirements-updated.txt
+
+# 3. Train ML models
+mkdir models
+python 02_model_training.py
+
+# 4. Run the app
+streamlit run app.py
+```
+
+Open browser → `http://localhost:8501` ✅
+
+---
+
+## 📊 Assessment Scales
+
+### PHQ-9 (Patient Health Questionnaire)
+Measures depression severity across 9 dimensions:
 | Score | Level |
-|--------|--------|
-| 0–4 | Minimal |
-| 5–9 | Mild |
-| 10–14 | Moderate |
-| 15–19 | Moderately Severe |
-| 20–27 | Severe |
+|-------|-------|
+| 0-4 | Minimal |
+| 5-9 | Mild |
+| 10-14 | Moderate |
+| 15-19 | Moderately Severe |
+| 20-27 | Severe |
 
-### 🔹 GAD-7 (Anxiety Levels)
-
+### GAD-7 (Generalized Anxiety Disorder)
+Measures anxiety severity across 7 dimensions:
 | Score | Level |
-|--------|--------|
-| 0–4 | Minimal |
-| 5–9 | Mild |
-| 10–14 | Moderate |
-| 15–21 | Severe |
+|-------|-------|
+| 0-4 | Minimal |
+| 5-9 | Mild |
+| 10-14 | Moderate |
+| 15-21 | Severe |
 
 ---
 
-## Exploratory Data Analysis (EDA)
-
-Key analyses performed:
-
-- Distribution of depression and anxiety severity  
-- Stress level vs sleep and activity patterns  
-- Gender-wise and age-wise mental health trends  
-- Treatment outcome comparison  
-- PHQ-9 vs GAD-7 correlation analysis  
-
-Visualizations include:
-
-- Histograms  
-- Bar charts  
-- Box plots  
-- Correlation heatmaps  
-
----
-
-## Machine Learning
+## 🤖 Machine Learning
 
 ### Models Trained
 - **Logistic Regression**: Baseline model (~78% accuracy)
 - **Decision Tree**: Interpretable model (~82% accuracy)
-- **Random Forest**: Best performer (~85% accuracy)
+- **Random Forest**: Best performer (~85% accuracy) ⭐
 
 ### Performance Metrics
 ```
@@ -124,70 +119,50 @@ Precision:       0.84
 Recall:          0.85
 F1-Score:        0.84
 ```
- 
 
-### Evaluation Metrics
-
-- Accuracy  
-- Precision  
-- Recall  
-- F1-Score  
-- Confusion Matrix  
-
-Model comparison is used to select the best-performing approach.
-
----
-
-## Tools & Technologies
-
-- Python  
-- Pandas, NumPy  
-- Matplotlib, Seaborn  
-- Scikit-learn  
-- Jupyter Notebook  
+### Features Used
+- Age, Gender
+- PHQ-9 & GAD-7 scores
+- Stress level (categorical)
+- Sleep hours
+- Physical activity (categorical)
+- Chronic illness (yes/no)
+- Mental health history (yes/no)
+- Current treatment (categorical)
+- Days in treatment
+- Work status (categorical)
 
 ---
-## Application Architecture
-```
-Data Layer
-│
-├─ CSV Dataset (2,500+ records)
-│  └─ 16 features + targets
-│
-Model Layer
-│
-├─ 02_model_training.py
-│  ├─ Load & Clean Data
-│  ├─ Feature Engineering
-│  ├─ Train 3 Models
-│  └─ Export Best Model (85% accuracy)
-│
-Application Layer
-│
-└─ app.py (Streamlit)
-   ├─ Page 1: Home (Overview)
-   ├─ Page 2: Test (16 Questions)
-   ├─ Page 3: Results (Dashboards + Solutions)
-   └─ Page 4: About (Resources)
-```
 
-## Project Structure
+## 💾 Project Structure
+
 ```
 MindScope-2025/
-├─ Data/
-├── 01_Data_Cleaning.ipynb (original)
-├── Global_Mental_Health_Dataset_2025.csv (original)
+├── 📄 README.md                              (Project overview)
+├── 📄 SETUP_GUIDE.md                         (Detailed setup)
+├── 📄 QUICK_REFERENCE.md                     (Developer reference)
+├── 📋 requirements-updated.txt                (Dependencies)
 │
-├── 02_model_training.py
-├── app.py
-├── requirements.txt
-├── README.md
+├── 📊 Data/
+│   └── Global_Mental_Health_Dataset_2025.csv (2,500+ records)
 │
-└── models/ (auto-created after training)
-    ├── best_risk_model.pkl
-    ├── encoders.pkl
-    └── feature_cols.pkl
+├── 📓 Notebooks/
+│   ├── 01_Data_Cleaning.ipynb                (Data preprocessing)
+│   ├── 02_model_training.py          (NEW) (Model training)
+│   ├── 02_eda_visualization.ipynb            (Coming soon)
+│   └── 03_model_training.ipynb               (Coming soon)
+│
+├── 🎮 app.py                         (NEW) (Streamlit app)
+│
+├── 🔧 models/                        (AUTO-CREATED)
+│   ├── best_risk_model.pkl
+│   ├── random_forest_model.pkl
+│   ├── encoders.pkl
+│   └── feature_cols.pkl
+│
+└── 📑 LICENSE.md
 ```
+
 ---
 
 ## 🛠️ Technology Stack
@@ -390,13 +365,13 @@ Contributions welcome! Areas for enhancement:
 
 ---
 
-## License
+## 📄 License
 
 This project is open-source. See `LICENSE.md` for details.
 
 ---
 
-## Author
+## 👨‍💻 Author
 
 **MindScope Development Team**
 - Computer Science Student
@@ -405,7 +380,7 @@ This project is open-source. See `LICENSE.md` for details.
 
 ---
 
-## Acknowledgments
+## 🎉 Acknowledgments
 
 - **Dataset**: Global Mental Health Dataset 2025 (Kaggle)
 - **Assessment Tools**: PHQ-9 and GAD-7 (Evidence-based clinical instruments)
@@ -414,53 +389,53 @@ This project is open-source. See `LICENSE.md` for details.
 
 ---
 
-## Support
+## 📞 Support
 
-- **Documentation**: See SETUP_GUIDE.md for detailed instructions
-- **Quick Start**: See QUICK_REFERENCE.md for development tips
-- **Issues**: Report bugs or suggest features
-- **Discussion**: Open for collaboration and feedback
+- 📖 **Documentation**: See SETUP_GUIDE.md for detailed instructions
+- 🚀 **Quick Start**: See QUICK_REFERENCE.md for development tips
+- 🐛 **Issues**: Report bugs or suggest features
+- 💬 **Discussion**: Open for collaboration and feedback
 
 ---
 
-## Educational Value
+## 🎓 Educational Value
 
 This project demonstrates:
-1. **Full ML Pipeline**: Data → Features → Training → Deployment
-2. **Clinical Knowledge**: Evidence-based assessment tools
-3. **Full-Stack**: Backend ML + Frontend UI
-4. **Best Practices**: Clean code, documentation, testing
-5. **Real-World Impact**: Technology for mental health awareness
+1. ✅ **Full ML Pipeline**: Data → Features → Training → Deployment
+2. ✅ **Clinical Knowledge**: Evidence-based assessment tools
+3. ✅ **Full-Stack**: Backend ML + Frontend UI
+4. ✅ **Best Practices**: Clean code, documentation, testing
+5. ✅ **Real-World Impact**: Technology for mental health awareness
 
 **Perfect portfolio project for:** Data Science, Machine Learning, Healthcare Tech, Full-Stack Development roles.
 
 ---
 
-## What Makes This Special
+## 🌟 What Makes This Special
 
-- **Purpose-Driven**: Addresses real mental health need
-- **Evidence-Based**: Uses clinically validated scales
-- **AI-Powered**: Machine learning for risk prediction
-- **User-Friendly**: Intuitive interface for non-technical users
-- **Privacy-First**: Local processing, no data transmission
-- **Comprehensive**: 96+ personalized recommendations
-- **Production-Ready**: Ready to deploy and share
+- 🎯 **Purpose-Driven**: Addresses real mental health need
+- 🔬 **Evidence-Based**: Uses clinically validated scales
+- 🤖 **AI-Powered**: Machine learning for risk prediction
+- 🎨 **User-Friendly**: Intuitive interface for non-technical users
+- 🔒 **Privacy-First**: Local processing, no data transmission
+- 📚 **Comprehensive**: 96+ personalized recommendations
+- 🚀 **Production-Ready**: Ready to deploy and share
 
 ---
 
-**Together, let's improve mental health awareness and accessibility! 🧠**
+**Together, let's improve mental health awareness and accessibility! 🧠💚**
 
 ---
 
 ## 📝 Change Log
 
 ### v1.0.0 (Current Release)
-- Complete ML model training pipeline
-- Interactive Streamlit web app
-- PHQ-9 & GAD-7 assessment tools
-- 96+ personalized solutions
-- Production-ready deployment
-- Comprehensive documentation
+- ✅ Complete ML model training pipeline
+- ✅ Interactive Streamlit web app
+- ✅ PHQ-9 & GAD-7 assessment tools
+- ✅ 96+ personalized solutions
+- ✅ Production-ready deployment
+- ✅ Comprehensive documentation
 
 ---
 
