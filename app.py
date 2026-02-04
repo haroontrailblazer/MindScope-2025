@@ -1,4 +1,5 @@
 
+from numpy.char import center
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -19,50 +20,7 @@ st.set_page_config(
     page_title="MindScope-2025 - Mental Health Assessment",
     page_icon="https://github.com/haroontrailblazer/haroontrailblazer/blob/main/Project%20Pngs/ico.png?raw=true",
     layout="centered",
-    menu_items={
-        'About':"""
-        ### About MindScope-2025
-        
-        **MindScope-2025** is an educational tool designed to help individuals assess their mental health 
-        using evidence-based screening tools combined with machine learning.
-        
-        #### Technology Stack
-        - **Framework**: Streamlit
-        - **ML Models**: Scikit-learn (Random Forest, Logistic Regression)
-        - **Data**: Global Mental Health Dataset 2025 (synthetic)
-        - **Assessment Tools**: PHQ-9 & GAD-7
-        
-        #### Clinical Scales Used
-        
-        **PHQ-9 (Patient Health Questionnaire)**
-        - 9-item screening tool for depression
-        - Scores: 0-27
-        - Based on DSM-IV depression criteria
-        - Widely used in clinical and research settings
-        
-        **GAD-7 (Generalized Anxiety Disorder)**
-        - 7-item screening tool for anxiety
-        - Scores: 0-21
-        - Clinical diagnostic validity
-        - Recommended by WHO
-        
-        #### Disclaimer
-        This application is for educational and self-assessment purposes only and should not be used 
-        for professional medical diagnosis or treatment. If you are experiencing a mental health crisis, 
-        please contact:
-        
-        - **Emergency Services**: 911 (US) | 112 (India)
-        - **Suicide Prevention**: 1-800-273-8255 (US)
-        - **Crisis Text**: Text HOME to 741741
-        
-        #### Data Privacy
-        All assessments are processed locally. No data is stored or transmitted to external servers.
-        
-        #### Disclaimer
-        This tool is designed for educational purposes only and cannot replace professional 
-        mental health assessment or treatment.
-        """
-    }
+    initial_sidebar_state="collapsed"
 )
 
 # --- SEO META TAGS ---
@@ -459,7 +417,7 @@ def display_solutions(risk_level):
     """, unsafe_allow_html=True)
     
     st.markdown("---")
-    st.subheader("📋 Recommended Solutions & Action Plan")
+    st.subheader("📋 Recommended Action To Take")
     
     # Display solutions by category
     for solution in solution_data['solutions']:
@@ -572,8 +530,10 @@ st.markdown("""
 # ==================== MAIN APP ====================
 def main():
     
+    
     # Load models
     model, encoders, feature_cols = load_models()
+    
     if "page" not in st.session_state:
         st.session_state.page = "🏠 Home"
     page = st.session_state.page
@@ -581,8 +541,14 @@ def main():
    
     if page == "🏠 Home":
         
+        with st.sidebar: 
+            st.markdown("<h4 style='color:#fffdd0;'>Know more about MindScope</h4>",unsafe_allow_html=True) 
+            page = st.button("About", key="about_button")
+            if page:
+                st.session_state.page = "About"
+        
         st.markdown("""
-        <h2 style='text-align:left; color:#8b5cf6;'>MindScope-2025</h2>
+        <h1 style='text-align:left; color:#8b5cf6;'>MindScope</h1>
         <p style='text-align:left; color:grey; font-size:14px; margin-top:-10px;'>AI-powered mental health assessment tool, Evidence-based depression and anxiety screening with personalized recommendations.</p>""", unsafe_allow_html=True)
         
         if st.button("Start My Screening Test", icon="📋"):
@@ -630,8 +596,18 @@ def main():
     
     
     elif page == "📋 Screening Test":
+        
         st.markdown("""
-        <h2 style='text-align:left; color:#fffdd0;'>Mental Health Screening Test</h2>""", unsafe_allow_html=True)
+        <style>
+        /* Remove extra top padding */
+        .block-container {
+            padding-top: 1rem !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <h3 style='text-align:left; color:#fffdd0;'>Mental Health Screening Test</h3>""", unsafe_allow_html=True)
         st.caption("Please answer the following questions honestly. All responses are confidential.")
         
         st.markdown("---")
@@ -645,7 +621,8 @@ def main():
         
         # Basic Information Section
         st.markdown("""
-        <h4 style='text-align:left; color:#fffdd0;'>👤 Basic Information</h4>""", unsafe_allow_html=True)
+        <h5 style='text-align:left; color:#fffdd0;'>👤 Basic Information</h5>""", unsafe_allow_html=True)
+        st.markdown("<br>",unsafe_allow_html=True)
 
         col1, col2, col3 = st.columns(3)
 
@@ -674,8 +651,9 @@ def main():
         
         # PHQ-9 Section
         st.markdown("""
-        <h4 style='text-align:left; color:#fffdd0;'>😞 Depression Screening (PHQ-9)</h4>""", unsafe_allow_html=True)
+        <h5 style='text-align:left; color:#fffdd0;'>😞 Depression Screening (PHQ-9)</h5>""", unsafe_allow_html=True)
         st.caption("Over the last **2 weeks**, how often have you been bothered by the following problems?")
+        st.markdown("<br>",unsafe_allow_html=True)
 
         PHQ_OPTIONS = {
             0: "Not at all",
@@ -709,8 +687,9 @@ def main():
         
         # GAD-7 Section
         st.markdown("""
-        <h4 style='text-align:left; color:#fffdd0;'>😰 Anxiety Screening (GAD-7)</h4>""", unsafe_allow_html=True)
+        <h5 style='text-align:left; color:#fffdd0;'>😰 Anxiety Screening (GAD-7)</h5>""", unsafe_allow_html=True)
         st.caption("Over the last **2 weeks**, how often have you been bothered by the following problems?")
+        st.markdown("<br>",unsafe_allow_html=True)
 
         gad7_responses = []
 
@@ -739,7 +718,8 @@ def main():
         
         # Lifestyle Factors Section
         st.markdown("""
-        <h4 style='text-align:left; color:#fffdd0;'>🏃 Lifestyle & Health Factors</h4>""", unsafe_allow_html=True)
+        <h5 style='text-align:left; color:#fffdd0;'>🏃 Lifestyle & Health Factors</h5>""", unsafe_allow_html=True)
+        st.markdown("<br>",unsafe_allow_html=True)
         col1, col2, col3 = st.columns(3)
         
         with col1:
@@ -811,7 +791,7 @@ def main():
                 st.rerun()
         else:
             st.markdown("""
-            <h2 style='text-align:left; color:#fffdd0;'>Your Assessment Results</h2>""", unsafe_allow_html=True)
+            <h2 style='text-align:left; color:#fffdd0;'>Assessment Results</h2>""", unsafe_allow_html=True)
             st.caption("Based on your responses, here are your mental health assessment results and personalized recommendations.")
             
             # Display results
@@ -837,12 +817,14 @@ def main():
                 st.session_state.page = "📋 Screening Test"
                 st.rerun()
                 
+            st.markdown("<p style='text-align:center; color:#8b5cf6;'>↑ scroll up to review your assessment.</p>", unsafe_allow_html=True)
+                
                 
                 
                 
     
     # ==================== ABOUT PAGE ====================
-    elif page == "ℹ️ About":
+    elif page == "About":
         st.markdown("""
         ### About MindScope-2025
         
