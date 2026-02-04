@@ -1,18 +1,17 @@
-<div align=center>
-
-## MindScope-2025: AI-Powered Mental Health Assessment App
-
-![Mental Health Assessment](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red?logo=streamlit)
-![Machine Learning](https://img.shields.io/badge/ML-Scikit--learn-orange?logo=scikit-learn)
-![Status](https://img.shields.io/badge/Status-Production%20Ready-green)
-
-![1000166454](https://github.com/user-attachments/assets/93d0677b-9de0-4260-b141-fd0994a110fd)
-
-Mental Health Status Analysis using AI
-
-> AI-driven mental health analytics project using PHQ-9, GAD-7, and stress indicators to identify risk patterns through data science and machine learning.
-<div>
+  <div align=center>
+   
+  ## MindScope-2025: AI-Powered Mental Health Assessment App
+   
+  ![Mental Health Assessment](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
+  ![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red?logo=streamlit)
+  ![Machine Learning](https://img.shields.io/badge/ML-Scikit--learn-orange?logo=scikit-learn)
+  ![Status](https://img.shields.io/badge/Status-Production%20Ready-green)
+  
+  ![1000166454](https://github.com/user-attachments/assets/93d0677b-9de0-4260-b141-fd0994a110fd)
+  </div>
+  Mental Health Status Analysis using AI
+  
+  > AI-driven mental health analytics project using PHQ-9, GAD-7, and stress indicators to identify risk patterns through data science and machine learning.
 
 ## Overview
 
@@ -205,7 +204,7 @@ MindScope-2025/
 
 ## 📱 Supported Features
 
-### ✅ Completed
+### Completed
 - [x] PHQ-9 screening questionnaire
 - [x] GAD-7 screening questionnaire
 - [x] ML model training pipeline
@@ -216,12 +215,12 @@ MindScope-2025/
 - [x] Crisis resources
 - [x] Data validation and error handling
 
-### 🔄 In Progress
+### In Progress
 - [ ] EDA and visualization notebook
 - [ ] Model performance analysis
 - [ ] Cross-validation studies
 
-### 🎯 Future Enhancements
+### Future Enhancements
 - [ ] User authentication and profiles
 - [ ] Assessment history tracking
 - [ ] PDF report export
@@ -232,16 +231,16 @@ MindScope-2025/
 
 ---
 
-## 📋 Personalized Solutions by Risk Level
+## Personalized Solutions by Risk Level
 
-### Low Risk (✅ Good Mental Health)
+### Low Risk (Good Mental Health)
 **4 Categories, 16 Tips:**
 - Physical Activity: Continue regular exercise
 - Sleep & Rest: Maintain 7-8 hours nightly
 - Mental Wellness: Practice mindfulness
 - Lifestyle: Balanced nutrition and nature time
 
-### Moderate Risk (⚠️ Take Action)
+### Moderate Risk (Take Action)
 **5 Categories, 25 Tips:**
 - Physical Activity: Increase to 45-60 mins daily
 - Sleep & Rest: Prioritize 7-9 hours
@@ -249,7 +248,7 @@ MindScope-2025/
 - Stress Management: Meditation, journaling, apps
 - Professional Help: Consider counselor/therapist
 
-### High Risk (🚨 Seek Help)
+### High Risk (Seek Help)
 **5 Categories, 24 Tips:**
 - Immediate Actions: Contact mental health professional NOW
 - Professional Treatment: Psychiatrist, therapy, medication options
@@ -259,7 +258,7 @@ MindScope-2025/
 
 ---
 
-## 🧪 Testing Guide
+## Testing Guide
 
 ### Test Case 1: Low Risk Assessment
 ```
@@ -284,65 +283,26 @@ Expected: High Risk → Professional help recommendation
 
 ---
 
-## 🚀 Deployment Options
+## Important Disclaimers
 
-### Option 1: Streamlit Cloud (Recommended for Beginners)
-```bash
-# 1. Push to GitHub
-git add .
-git commit -m "MindScope-2025"
-git push origin main
-
-# 2. Go to https://streamlit.io/cloud
-# 3. Connect GitHub and deploy
-# 4. Share public URL
-```
-
-### Option 2: Docker (Production)
-```bash
-# Build image
-docker build -t mindscope .
-
-# Run container
-docker run -p 8501:8501 mindscope
-```
-
-### Option 3: Local Network
-```bash
-streamlit run app.py --server.address=0.0.0.0 --server.port=8501
-```
-
-### Option 4: Traditional Server
-```bash
-# Install Gunicorn
-pip install gunicorn
-
-# Run with Gunicorn
-gunicorn -w 4 -b 0.0.0.0:8000 app:__main__
-```
-
----
-
-## ⚠️ Important Disclaimers
-
-🔴 **CRITICAL**: 
+**CRITICAL**: 
 - This app is for **educational and self-assessment** purposes only
 - **NOT a substitute** for professional medical advice
 - **NOT for diagnosis** or treatment of mental health conditions
 - **Cannot replace** licensed therapists or psychiatrists
 - Synthetic dataset used for training
 
-✅ **If you are in crisis:**
-- 📞 Call emergency services: **911 (US) | 112 (India)**
-- 🆘 Suicide Prevention: **1-800-273-8255 (US)**
-- 💬 Crisis Text: **Text HOME to 741741**
-- 🌍 AAMI (India): **9152987821**
+**If you are in crisis:**
+- Call emergency services: **911 (US) | 112 (India)**
+- Suicide Prevention: **1-800-273-8255 (US)**
+- Crisis Text: **Text HOME to 741741**
+- AAMI (India): **9152987821**
 
 ---
 
-## 🔐 Data Privacy & Security
+## Data Privacy & Security
 
-✅ **Privacy-First Design:**
+**Privacy-First Design:**
 - All processing done **locally** on user's machine
 - **NO data transmission** to external servers
 - **NO data storage** (session-based only)
@@ -351,7 +311,7 @@ gunicorn -w 4 -b 0.0.0.0:8000 app:__main__
 
 ---
 
-## 📊 Dataset Information
+## Dataset Information
 
 - **Source**: Global Mental Health Dataset 2025 (Kaggle)
 - **Records**: 2,500+ synthetic patient samples
@@ -361,7 +321,7 @@ gunicorn -w 4 -b 0.0.0.0:8000 app:__main__
 
 ---
 
-## 📚 Learning Resources
+## Learning Resources
 
 ### Assessment Scales
 - [PHQ-9 Official](https://www.phqscreeners.com/)
@@ -379,7 +339,7 @@ gunicorn -w 4 -b 0.0.0.0:8000 app:__main__
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions welcome! Areas for enhancement:
 - [ ] Additional assessment scales (DASS-21, BDI-II)
@@ -452,7 +412,7 @@ This project demonstrates:
 
 ---
 
-## 📝 Change Log
+## Change Log
 
 ### v1.0.0 (Current Release)
 - Complete ML model training pipeline
