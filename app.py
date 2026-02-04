@@ -39,14 +39,16 @@ st.markdown("""
 <style>
 /* Primary buttons */
 div.stButton > button {
-    background-color: #7c3aed;
-    color: #fffdd0;
+    background: linear-gradient(135deg, #5A4AE3, #7A6AF8,rgba(0,0,0,0.04));
+    color: #FFFFFF;
     border-radius: 12px;
     font-weight: 900;
 }
 div.stButton > button:hover {
-    background-color: #8b5cf6;
+    background: linear-gradient(212deg, #5A4AE3, #7A6AF8,rgba(0,0,0,0.04));
+    box-shadow: 0 14px 29px rgba(109, 93, 246, 0.35);
 }
+
 
 /* Radio buttons */
 div[role="radiogroup"] input[type="radio"] {
@@ -549,7 +551,7 @@ def main():
                 st.rerun()
         
         st.markdown("""
-        <h1 style='text-align:left; color:#8b5cf6;'>MindScope</h1>
+        <h1 style='text-align:left; background: linear-gradient(90deg, #8B7BFF, #B6A9FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent;'>MindScope</h1>
         <p style='text-align:left; color:grey; font-size:14px; margin-top:-10px;'>AI-powered mental health assessment tool, Evidence-based depression and anxiety screening with personalized recommendations.</p>""", unsafe_allow_html=True)
         
         if st.button("Start My Screening Test", icon="📋"):
