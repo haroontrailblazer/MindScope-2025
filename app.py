@@ -735,7 +735,7 @@ def main():
         with col3:
             stress_level = st.selectbox(
                 "Current stress level",
-                ["Low", "Moderate", "High", "Severe"]
+                ["Low", "High", "Severe"]
             )
         
         chronic_illness = st.radio("Do you have any chronic illness?", ["No", "Yes"])
