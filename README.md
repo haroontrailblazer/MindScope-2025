@@ -346,18 +346,6 @@ Expected: High Risk → Professional help recommendation
 - [Python ML Handbook](https://scikit-learn.org/stable/index.html)
 
 ---
-<br>
-
-## Contributing
-
-Contributions welcome! Areas for enhancement:
-- [ ] Additional assessment scales (DASS-21, BDI-II)
-- [ ] Multi-language support
-- [ ] Mobile app development
-- [ ] Healthcare provider integration
-- [ ] Real clinical validation
-
----
 
 ## License
 
