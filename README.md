@@ -1,6 +1,6 @@
   <div align=center>
    
-  # MindScope-2025: AI-Powered Mental Health Assessment App
+  ## MindScope-2025: AI-Powered Mental Health Assessment App
    
   ![Mental Health Assessment](https://img.shields.io/badge/Python-3.8+-blue?logo=python)
   ![Streamlit](https://img.shields.io/badge/Streamlit-1.31.0-red?logo=streamlit)
