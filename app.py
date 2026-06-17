@@ -20,13 +20,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-st.markdown("""
-<head>
-  <meta name="description" content="MindScope — a confidential, AI-powered mental wellbeing assessment using clinically validated PHQ-9 (depression) and GAD-7 (anxiety) screening with personalized guidance.">
-  <meta name="keywords" content="MindScope, mental health, wellbeing, PHQ-9, GAD-7, depression screening, anxiety assessment, Haroon K M">
-  <meta name="robots" content="index, follow">
-</head>
-""", unsafe_allow_html=True)
+# SEO + Open Graph / Twitter meta. Single source of truth in og_meta.html, which is
+# also injected into Streamlit's served index.html at build time (see Dockerfile) so
+# social crawlers — which don't run JS — can read the share-card tags.
+try:
+    with open("og_meta.html", encoding="utf-8") as _f:
+        st.markdown(_f.read(), unsafe_allow_html=True)
+except FileNotFoundError:
+    pass
 
 
 # ==================== DESIGN TOKENS (Warm Wellness) ====================
