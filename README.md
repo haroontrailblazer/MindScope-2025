@@ -27,10 +27,8 @@
 1. [Overview](#-overview)
 2. [Flow at a Glance](#-flow-at-a-glance)
 3. [Key Features](#-key-features)
-4. [End-to-End Workflow](#-end-to-end-workflow)
-4. [Application Flow](#-application-flow)
-5. [Inference Pipeline](#-inference-pipeline)
-6. [System Architecture](#-system-architecture)
+4. [System Architecture](#-system-architecture)
+5. [Core Flows](#-core-flows)
 7. [Clinical Scales & Risk Logic](#-clinical-scales--risk-logic)
 8. [Dataset](#-dataset)
 9. [Machine Learning](#-machine-learning)
@@ -148,21 +146,92 @@ A single end-to-end view of the project — from the public dataset (offline mod
 
 ---
 
-## 🔄 End-to-End Workflow
+## 🏗️ System Architecture
 
-The diagram below shows the full machine learning lifecycle, from the public dataset to the live application.
+> Thick arrows are the primary user path; dotted arrows load the trained model artifacts. Each tier is colour-coded.
+
+```mermaid
+flowchart TB
+    subgraph userT["USER TIER"]
+        U["Person<br/>taking the assessment"]
+    end
+
+    subgraph appT["PRESENTATION TIER — Streamlit on Render"]
+        UI["app.py · guided wizard<br/>Warm Wellness UI"]
+        Home["Home"]
+        Wiz["Assessment Wizard<br/>4 steps"]
+        Res["Results dashboard"]
+        Abt["About"]
+    end
+
+    subgraph logicT["INFERENCE TIER — Python"]
+        Score["Score PHQ-9 / GAD-7"]
+        Enc["Encode features"]
+        Pred["Predict risk"]
+        Guide["Map guidance"]
+    end
+
+    subgraph artT["MODEL ARTIFACTS — joblib"]
+        M1[("best_risk_model.pkl")]
+        M2[("encoders.pkl")]
+        M3[("feature_cols.pkl")]
+    end
+
+    subgraph offT["OFFLINE TRAINING — run once"]
+        CSV[["Kaggle CSV dataset"]]
+        Train["02_model_training.py"]
+    end
+
+    U ==>|HTTPS| UI
+    UI --> Home & Wiz & Res & Abt
+    Wiz ==>|responses| Score
+    Score ==> Enc ==> Pred ==> Guide
+    Guide ==>|risk + tips| Res
+    Enc -.->|load| M2
+    Pred -.->|load| M1 & M3
+    CSV ==> Train
+    Train -.->|export| M1 & M2 & M3
+
+    classDef tUser fill:#EEF3E9,stroke:#5F7A57,color:#2E3A24
+    classDef tApp fill:#FBF0E6,stroke:#C2703D,color:#7E3F1A
+    classDef tLogic fill:#F3F7EF,stroke:#7C9473,color:#2E3A24
+    classDef tData fill:#FCF6E9,stroke:#B8924A,color:#5C4710
+    classDef tOff fill:#F1ECE3,stroke:#8A7A66,color:#3D3326
+
+    class U tUser
+    class UI,Home,Wiz,Res,Abt tApp
+    class Score,Enc,Pred,Guide tLogic
+    class M1,M2,M3 tData
+    class CSV,Train tOff
+```
+
+---
+
+## 🔄 Core Flows
+
+### 1. Machine Learning Lifecycle — training path
 
 ```mermaid
 flowchart LR
-    A["Kaggle Dataset<br/>Global Mental Health 2025"] --> B["Cleaning + Preprocessing<br/>pandas, numpy"]
-    B --> C["EDA + Insights<br/>Jupyter Notebook"]
-    C --> D["Feature Engineering<br/>label encoding + clinical thresholds"]
-    D --> E["Model Training<br/>LogReg, Decision Tree, Random Forest"]
-    E --> F["Model Selection<br/>best: Random Forest"]
-    F --> G["Serialize Artifacts<br/>joblib .pkl"]
-    G --> H["Streamlit Application<br/>app.py"]
-    H --> I["Containerize<br/>Docker"]
-    I --> J["Deploy<br/>Render"]
+    A(["Kaggle Dataset<br/>Global Mental Health 2025"]) ==> B["Clean + Preprocess<br/>pandas · numpy"]
+    B ==> C["EDA + Insights<br/>Jupyter"]
+    C ==> D["Feature Engineering<br/>encode + clinical thresholds"]
+    D ==> E{{"Train + Compare<br/>LogReg · Tree · Forest"}}
+    E ==> F["Select Best<br/>Random Forest"]
+    F ==> G[("Serialize .pkl<br/>joblib")]
+    G ==> H(["Deployed app<br/>Docker · Render"])
+
+    classDef start fill:#EEF3E9,stroke:#5F7A57,color:#2E3A24
+    classDef proc fill:#F3F7EF,stroke:#7C9473,color:#2E3A24
+    classDef task fill:#FBF0E6,stroke:#C2703D,color:#7E3F1A
+    classDef store fill:#FCF6E9,stroke:#B8924A,color:#5C4710
+    classDef ok fill:#E7F0DF,stroke:#5F7A57,color:#2E3A24
+
+    class A start
+    class B,C,D,F proc
+    class E task
+    class G store
+    class H ok
 ```
 
 **Stage-by-stage explanation**
@@ -180,42 +249,30 @@ flowchart LR
 | 9 | **Containerization** | Package the app and its dependencies into a reproducible image. | Docker |
 | 10 | **Deployment** | Publish the container as a public web service. | Render |
 
----
-
-## 🧭 Application Flow
-
-How a user moves through the product — a guided, four-step wizard that ends in a personalized results dashboard.
+### 2. Assessment & Prediction — inference path
 
 ```mermaid
-flowchart TD
-    H["Home / Overview"] -->|Begin Assessment| S1["Step 1 — Basics<br/>age, gender, work status"]
-    S1 -->|Continue| S2["Step 2 — Depression (PHQ-9)<br/>9 items, live score"]
-    S2 -->|Continue| S3["Step 3 — Anxiety (GAD-7)<br/>7 items, live score"]
-    S3 -->|Continue| S4["Step 4 — Lifestyle and Health<br/>sleep, activity, stress, treatment"]
-    S4 -->|Analyze| P["Encode + Predict<br/>Random Forest"]
-    P --> R["Results Dashboard<br/>risk band, gauges, guidance"]
-    R -->|Take again| S1
-    R -->|Explore| AB["About / Resources"]
-```
+sequenceDiagram
+    autonumber
+    actor U as User
+    participant W as Wizard · app.py
+    participant S as Scorer
+    participant E as Encoders
+    participant M as Random Forest
+    participant G as Guidance
 
-Each step is a self-contained card; the wizard preserves answers across steps and computes running PHQ-9 / GAD-7 subtotals so the user always sees their progress.
-
----
-
-## 🧮 Inference Pipeline
-
-What happens the moment a user clicks **Analyze** — from raw answers to an explainable prediction.
-
-```mermaid
-flowchart LR
-    U["User Responses"] --> SC["Compute PHQ-9 + GAD-7 totals"]
-    SC --> EN["Encode categoricals<br/>saved LabelEncoders"]
-    EN --> VEC["Assemble 12-feature vector"]
-    VEC --> M{{"Random Forest Classifier"}}
-    M --> PR["Risk Band<br/>Low / Moderate / High"]
-    M --> CF["Confidence Score<br/>predict_proba"]
-    PR --> OUT["Results + Personalized Guidance"]
-    CF --> OUT
+    U->>+W: complete Steps 1 to 4
+    Note over W: answers preserved across steps
+    W->>S: sum PHQ-9 (0 to 27) and GAD-7 (0 to 21)
+    S-->>W: severity bands
+    W->>+E: encode categoricals (saved LabelEncoders)
+    E-->>-W: 12-feature vector
+    W->>+M: predict(features)
+    M-->>-W: risk = Low / Moderate / High
+    M-->>W: predict_proba gives confidence
+    W->>+G: map risk to recommendations
+    G-->>-W: personalized tips
+    W-->>-U: Results — risk, gauges, guidance
 ```
 
 The model consumes a **12-feature vector**:
@@ -224,30 +281,28 @@ The model consumes a **12-feature vector**:
 
 > 🛡️ **Robust by design:** encoding falls back gracefully for inclusive options not present in the training set (e.g. additional gender or work-status choices), so the app never crashes on valid user input.
 
----
-
-## 🏗️ System Architecture
-
-A clean separation between **offline training** (run once) and **runtime inference** (every user session).
+### 3. Risk Decision Logic
 
 ```mermaid
-flowchart TB
-    subgraph OFFLINE["Offline — Training Pipeline (run once)"]
-        CSV["CSV Dataset"] --> TR["02_model_training.py"]
-        TR --> A1["best_risk_model.pkl"]
-        TR --> A2["encoders.pkl"]
-        TR --> A3["feature_cols.pkl"]
-    end
+flowchart TD
+    S(["PHQ-9 + GAD-7 scored"]) ==> R["risk = (PHQ-9 + GAD-7) / 2"]
+    R ==> Q1{"risk under 5 ?"}
+    Q1 -->|Yes| Low(["LOW RISK<br/>maintenance + wellness tips"])
+    Q1 -->|No| Q2{"risk under 12 ?"}
+    Q2 -->|Yes| Mod(["MODERATE RISK<br/>intervention strategies"])
+    Q2 -->|No| High(["HIGH RISK<br/>professional help + crisis resources"])
 
-    subgraph RUNTIME["Runtime — Web Application"]
-        UI["app.py · Streamlit"]
-    end
+    classDef start fill:#EEF3E9,stroke:#5F7A57,color:#2E3A24
+    classDef decision fill:#FCF6E9,stroke:#B8924A,color:#5C4710
+    classDef low fill:#E7F0DF,stroke:#5F7A57,color:#2E3A24
+    classDef mod fill:#FBF0E6,stroke:#C2703D,color:#7E3F1A
+    classDef high fill:#FBE9E4,stroke:#B5462C,color:#7E2C1A
 
-    A1 --> UI
-    A2 --> UI
-    A3 --> UI
-    USER(("User")) <--> UI
-    UI -.deployed via.-> DEP["Docker → Render"]
+    class S start
+    class R,Q1,Q2 decision
+    class Low low
+    class Mod mod
+    class High high
 ```
 
 ---
