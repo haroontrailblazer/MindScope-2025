@@ -312,10 +312,50 @@ div[role="radiogroup"] label:has(input:checked) {
     background: #FFFFFF; border: 1px solid #DCE7D4; border-radius: 999px; padding: 7px 15px; white-space: nowrap;
 }
 
+/* ------------------------- Mobile ------------------------- */
 @media (max-width: 640px) {
+    .block-container { padding-top: 0.85rem !important; padding-bottom: 2rem !important; }
+
+    /* brand header: hide the decorative chip, tighten */
+    .ms-nav { padding: 13px 16px; border-radius: 16px; }
+    .ms-brand-name { font-size: 1.2rem; }
+    .ms-nav-chip { display: none; }
+
+    /* hero scales down */
+    .ms-hero { padding: 30px 22px; border-radius: 24px; }
+    .ms-hero h1 { font-size: 1.95rem; }
+    .ms-hero p  { font-size: .96rem; }
+
+    /* multi-column grids collapse to one column */
     .ms-grid, .ms-steplist { grid-template-columns: 1fr; }
-    .ms-hero h1 { font-size: 2rem; }
-    .ms-hero { padding: 34px 26px; }
+
+    /* section headers */
+    .ms-sec-tt { font-size: 1.18rem; }
+    .ms-sec-ic { width: 38px; height: 38px; font-size: 1.1rem; }
+
+    /* comfortable inner card padding on narrow screens */
+    [data-testid="stVerticalBlockBorderWrapper"] > div { padding: 1rem; }
+
+    /* tighten stacked column gaps (top nav, inputs, metrics) */
+    [data-testid="stHorizontalBlock"] { gap: 0.5rem; }
+
+    /* answer chips: clean two-per-row, equal width, single line */
+    div[role="radiogroup"] label { flex: 1 1 42%; min-width: 88px; padding: 8px 10px; font-size: 0.82rem; }
+    div[role="radiogroup"] label p { font-size: 0.82rem; margin: 0; }
+
+    /* running-score card wraps gracefully (long severity bands) */
+    .ms-score { padding: 14px 16px; gap: 12px; flex-wrap: wrap; }
+
+    /* risk banner: tighter on small screens */
+    .ms-risk { padding: 22px 20px; gap: 16px; border-radius: 20px; }
+    .ms-risk-badge { width: 54px; height: 54px; font-size: 1.7rem; }
+    .ms-risk h2 { font-size: 1.35rem; }
+    .ms-risk-kicker { font-size: .64rem; }
+
+    /* recommendations + footer */
+    .ms-tip { font-size: .85rem; }
+    .ms-foot { padding: 24px 22px; border-radius: 20px; }
+    .ms-foot .ttl { font-size: 1.1rem; }
 }
 </style>
 """, unsafe_allow_html=True)
